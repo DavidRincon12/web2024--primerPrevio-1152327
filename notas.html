@@ -1,4 +1,3 @@
-<!-- notas.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +87,11 @@
                     return response.json();
                 })
                 .then(data => {
-                    processNotasData(data);
+                    if (Array.isArray(data)) {
+                        processNotasData(data);
+                    } else {
+                        throw new Error('Los datos recibidos no son válidos.');
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -139,4 +142,5 @@
         }
     </script>
 
-</body> </html>
+</body>
+</html>
