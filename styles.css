@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.form-container {
+    text-align: center;
+}
+input[type="text"], input[type="password"] {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+label {
+    font-size: 14px;
+}
+button {
+    background-color: #D31024;
+    color: white;
+    font-size: 16px;
+    height: 32px;
+    width: 215px;
+    border-bottom-left-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+.error-message {
+    color: red;
+}
