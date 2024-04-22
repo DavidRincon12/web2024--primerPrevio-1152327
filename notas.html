@@ -78,14 +78,21 @@
         }
 
         function fetchNotas(codigo) {
-            // Simulamos una respuesta JSON válida
-            const simulatedResponse = [
-                { nombre: 'Matemáticas', creditos: 3, p1: 4.0, p2: 3.5, p3: 4.2, ef: 3.8 },
-                { nombre: 'Física', creditos: 4, p1: 3.7, p2: 4.1, p3: 3.9, ef: 4.0 },
-                { nombre: 'Química', creditos: 3, p1: 4.2, p2: 3.8, p3: 4.1, ef: 3.9 },
-            ];
+            const endpoint = `https://24a0dac0-2579-4138-985c-bec2df4bdfcc-00-3unzo70c406dl.riker.replit.dev/students/${codigo}/notas`;
 
-            processNotasData(simulatedResponse);
+            fetch(endpoint)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error en la solicitud: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    processNotasData(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
 
         function processNotasData(data) {
@@ -131,4 +138,5 @@
             window.location.href = 'index.html';
         }
     </script>
+
 </body> </html>
