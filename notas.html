@@ -78,39 +78,43 @@
         }
 
         function fetchNotas(codigo) {
-            fetch(`https://24a0dac0-2579-4138-985c-bec2df4bdfcc-00-3unzo70c406dl.riker.replit.dev/students/${codigo}/notas`)
-            .then(response => response.json())
-            .then(data => {
-                const notasTable = document.getElementById('notasTable');
-                let totalCreditos = 0;
-                let sumaProductos = 0;
+            // Simulamos una respuesta JSON válida
+            const simulatedResponse = [
+                { nombre: 'Matemáticas', creditos: 3, p1: 4.0, p2: 3.5, p3: 4.2, ef: 3.8 },
+                { nombre: 'Física', creditos: 4, p1: 3.7, p2: 4.1, p3: 3.9, ef: 4.0 },
+                { nombre: 'Química', creditos: 3, p1: 4.2, p2: 3.8, p3: 4.1, ef: 3.9 },
+            ];
 
-                data.forEach(asignatura => {
-                    const { nombre, creditos, p1, p2, p3, ef } = asignatura;
-                    const definitiva = calcularDefinitiva(p1, p2, p3, ef);
+            processNotasData(simulatedResponse);
+        }
 
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${nombre}</td>
-                        <td>${creditos}</td>
-                        <td>${p1}</td>
-                        <td>${p2}</td>
-                        <td>${p3}</td>
-                        <td>${ef}</td>
-                        <td>${definitiva}</td>
-                    `;
-                    notasTable.appendChild(row);
+        function processNotasData(data) {
+            const notasTable = document.getElementById('notasTable');
+            let totalCreditos = 0;
+            let sumaProductos = 0;
 
-                    totalCreditos += creditos;
-                    sumaProductos += definitiva * creditos;
-                });
+            data.forEach(asignatura => {
+                const { nombre, creditos, p1, p2, p3, ef } = asignatura;
+                const definitiva = calcularDefinitiva(p1, p2, p3, ef);
 
-                const promedioPonderado = calcularPromedioPonderado(sumaProductos, totalCreditos);
-                document.getElementById('promedioPonderado').textContent = promedioPonderado.toFixed(2);
-            })
-            .catch(error => {
-                console.error('Error:', error);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${nombre}</td>
+                    <td>${creditos}</td>
+                    <td>${p1}</td>
+                    <td>${p2}</td>
+                    <td>${p3}</td>
+                    <td>${ef}</td>
+                    <td>${definitiva}</td>
+                `;
+                notasTable.appendChild(row);
+
+                totalCreditos += creditos;
+                sumaProductos += definitiva * creditos;
             });
+
+            const promedioPonderado = calcularPromedioPonderado(sumaProductos, totalCreditos);
+            document.getElementById('promedioPonderado').textContent = promedioPonderado.toFixed(2);
         }
 
         function calcularDefinitiva(p1, p2, p3, ef) {
@@ -124,8 +128,7 @@
 
         function logOut() {
             localStorage.removeItem('user');
-window.location.href = 'index.html';
-}
-</script>
-
+            window.location.href = 'index.html';
+        }
+    </script>
 </body> </html>
