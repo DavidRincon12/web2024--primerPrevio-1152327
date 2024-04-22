@@ -5,18 +5,19 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-}
-.form-container {
+  }
+  .form-container {
     text-align: center;
-}
-input[type="text"], input[type="password"] {
+  }
+  input[type="text"],
+  input[type="password"] {
     font-size: 16px;
     margin-bottom: 10px;
-}
-label {
+  }
+  label {
     font-size: 14px;
-}
-button {
+  }
+  button {
     background-color: #D31024;
     color: white;
     font-size: 16px;
@@ -25,7 +26,8 @@ button {
     border-bottom-left-radius: 20px;
     border: none;
     cursor: pointer;
-}
-.error-message {
+  }
+  .error-message {
     color: red;
-}
+  }
+  
